@@ -1,0 +1,177 @@
+/* 1. 로컬 폰트 정의 */
+/* 어둠의굴림바람 - CDN 방식 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* 🚫 Safari (WebKit) - 암호 자동완성(열쇠 모양) 버튼 제거 */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+/* (보너스) 사파리에서 인풋 선택 시 테두리 못생기게 변하는 거 방지 */
+input[type="password"]:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: "TMoneyDungunbaram";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+    format("woff");
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* 보통 굵기 버전 추가 */
+@font-face {
+  font-family: "TMoneyDungunbaram_Reg";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 여기어때 한글체(기존 설정 유지) */
+@font-face {
+  font-family: "YeogiGothic";
+  src: url("/fonts/JalnanGothic.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperozi";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* 2. 전역 변수 설정 (폰트 + 컬러) */
+:root {
+  --font-logo: "Gaegu", cursive;
+  --font-main: sans-serif;
+  --font-title: "TMoneyDungunbaram_Reg", sans-serif;
+  --font-sub: "Paperozi", sans-serif;
+  --font-body: "Pretendard Variable", "Pretendard", sans-serif;
+
+  --color-brand: #2e8147;
+  --color-bg: #ffffff;
+  --color-surface: #e8f5e9;
+  --color-point: #ffb300;
+  --color-info: #00838f;
+  --text-main: #222222;
+  --text-sub: #6b6666;
+  --color-carbon: #e53935;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 3. 기본 스타일 적용 */
+body {
+  margin: 0;
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.title {
+  font-family: var(--font-title);
+}
+
+#root,
+main {
+  width: 100%;
+}
+
+#root > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+[data-loading="true"] {
+  position: relative;
+  pointer-events: none;
+}
+
+[data-loading="true"]::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -0.15em;
+  animation: button-spin 0.7s linear infinite;
+}
+
+@keyframes button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+main {
+  flex: 1;
+  background-color: var(--color-bg);
+}
+
+input[type="date"],
+input[type="month"] {
+  min-height: 42px;
+  border: 1.5px solid #d7e6da;
+  border-radius: 12px;
+  padding: 0 14px;
+  background-color: #ffffff;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+input[type="date"]:focus,
+input[type="month"]:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px rgba(46, 129, 71, 0.08);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.75;
+}

@@ -1,0 +1,108 @@
+/*  분리수거 대상 요소들 */
+.eco-draggable {
+  border: 2px dashed #4caf50 !important;
+  cursor: grab !important;
+  transition: transform 0.2s ease;
+  position: relative;
+  z-index: 100;
+
+  /*  지저분한 기본 드래그 속성 완벽 차단 */
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important; /* 이미지 강제 드래그 차단 */
+}
+
+.eco-draggable:hover {
+  background-color: rgba(76, 175, 80, 0.1) !important;
+  transform: scale(1.02);
+}
+
+/* 뜯어낸 원래 자리 (흐려짐) */
+.eco-hidden {
+  opacity: 0.2 !important;
+  filter: grayscale(100%);
+}
+
+/*  마우스에 따라다니는 '가짜(복제)' 요소 (투명 유령 아님!) */
+.eco-clone {
+  position: fixed !important;
+  z-index: 99999 !important;
+  pointer-events: none !important; /* 마우스 이벤트를 방해하지 않음 */
+  opacity: 0.95 !important;
+  transform: scale(1.05); /* 들고 있는 느낌 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+  margin: 0 !important;
+  background-color: #fff; /* 투명한 요소 방지 */
+  border: 3px solid #2e7d32 !important;
+  border-radius: 8px;
+  cursor: grabbing !important;
+}
+
+/* 쓰레기통 UI */
+.eco-recycle-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 50000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.eco-score-board {
+  background: #2e7d32;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.eco-close-btn {
+  background: #ff5252;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.eco-recycle-bin {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border: 5px solid #2e7d32;
+  border-radius: 25px;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    10px 10px 20px rgba(0, 0, 0, 0.1),
+    -10px -10px 20px rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.eco-floating-score {
+  position: absolute;
+  color: #ffb300;
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: floatUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.5);
+    opacity: 0;
+  }
+}

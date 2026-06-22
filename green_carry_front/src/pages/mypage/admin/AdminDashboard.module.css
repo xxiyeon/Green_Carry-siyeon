@@ -1,0 +1,356 @@
+/* 대시보드 전체 컨테이너 */
+.dashboardContainer {
+  background-color: var(--color-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  font-family: var(--font-body);
+}
+
+/* --- 상단 슬라이드 탭 메뉴 --- */
+.tabContainer {
+  position: relative;
+  display: flex;
+  width: 400px;
+  background: #f0f0f0; /* 비활성화 배경 (약간의 명도 조절) */
+  border-radius: 50px;
+  padding: 5px;
+  margin: 20px auto 40px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tabButton {
+  position: relative;
+  flex: 1;
+  z-index: 2;
+  border: none;
+  background: none;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-title); /* 티머니 둥근바람 */
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.activeText {
+  color: #ffffff !important;
+}
+
+.slideIndicator {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  background: var(--color-brand); /* 브랜드 메인 그린 */
+  border-radius: 50px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.slideIndicator.left {
+  transform: translateX(0);
+}
+.slideIndicator.right {
+  transform: translateX(100%);
+}
+
+/* --- 문의 내역 헤더 & 필터 --- */
+.inquiryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.inquiryTitle {
+  font-family: var(--font-title);
+  font-size: 24px;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBtn {
+  padding: 8px 18px;
+  border: 1px solid #ddd;
+  background-color: var(--color-bg);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-family: var(--font-sub); /* 여기어때 잘난체 */
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeFilter {
+  background-color: var(--color-brand);
+  color: #fff;
+  border-color: var(--color-brand);
+}
+
+/* --- 문의 내역 리스트 --- */
+.inquiryList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inquiryItem {
+  background: var(--color-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s ease;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+}
+
+.itemHeader:hover {
+  background-color: var(--color-surface); /* 강조 구역 배경색 */
+}
+
+.itemTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 뱃지 스타일 */
+.badge {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-family: var(--font-sub);
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.badgeAnswered {
+  background-color: var(--color-brand);
+  color: #ffffff;
+}
+
+.badgeUnanswered {
+  background-color: #ffebf0;
+  color: #e53935;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-family: var(--font-sub);
+  color: var(--text-main);
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+/* --- 아코디언 상세 내용 --- */
+.itemBody {
+  padding: 24px;
+  background-color: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.questionBox strong,
+.answerBox strong {
+  display: block;
+  font-family: var(--font-sub);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.questionBox p {
+  color: var(--text-main);
+  line-height: 1.6;
+  word-break: break-all; /* 긴 단어도 강제로 줄바꿈 */
+  overflow-wrap: break-word; /* 박스 너비에 맞춰 줄바꿈 */
+}
+
+.answerBox {
+  background-color: var(--color-surface); /* 그린캐리 강조 배경 */
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--color-brand);
+}
+
+.answerBox strong {
+  color: var(--color-brand);
+}
+
+.answerBox p {
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* --- 답변 작성 영역 --- */
+.answerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.answerInput {
+  width: 100%;
+  min-height: 120px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.answerInput:focus {
+  outline: none;
+  border-color: var(--color-brand);
+}
+
+.submitBtn {
+  padding: 12px 30px;
+  background-color: var(--color-point); /* 포인트 컬러: 오렌지/옐로우 계열 */
+  color: var(--text-main); /* 포인트 컬러 위에는 주로 어두운 글자 */
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #e6a100; /* 입체감 */
+  transition: all 0.1s;
+}
+
+.submitBtn:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #e6a100;
+}
+
+.submitBtn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+/* 데이터 없음 메시지 */
+.emptyMsg {
+  padding: 80px;
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: 20px;
+  color: var(--text-sub);
+  font-family: var(--font-sub);
+}
+
+/* 차트 섹션 공통 */
+.fullWidthSection {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .tabContainer {
+    width: 90%;
+  }
+  .itemHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .itemMeta {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* 공통 배지 스타일 */
+.gradeBadge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 68px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+/* 개인고객 */
+.personal {
+  background-color: #e0f2f1;
+  color: var(--color-info);
+  border: 1px solid #b2dfdb;
+}
+
+/* 사업자 */
+.business {
+  background-color: #fff8e1;
+  color: var(--color-point);
+  border: 1px solid #ffe082;
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .tabContainer {
+    width: 100%;
+    margin: 12px 0 24px;
+  }
+
+  .inquiryHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .filterGroup {
+    flex-wrap: wrap;
+  }
+
+  .itemHeader,
+  .itemBody {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .itemTitleGroup,
+  .itemMeta {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .itemMeta {
+    justify-content: flex-start;
+    gap: 8px 12px;
+  }
+
+  .emptyMsg {
+    padding: 40px 20px;
+  }
+}

@@ -1,0 +1,134 @@
+/* 1. 대시보드 공통 레이아웃 */
+.dashboardContainer {
+  background-color: var(--color-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/*상단 슬라이드 탭 메뉴 */
+.tabContainer {
+  position: relative;
+  display: flex;
+  width: 400px;
+  background: #f0f0f0;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 20px auto 40px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tabButton {
+  position: relative;
+  flex: 1;
+  z-index: 2;
+  border: none;
+  background: none;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-title);
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.activeText {
+  color: #ffffff !important;
+}
+
+.slideIndicator {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  background: var(--color-brand);
+  border-radius: 50px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.slideIndicator.left {
+  transform: translateX(0);
+}
+
+.slideIndicator.right {
+  transform: translateX(100%);
+}
+
+/*  3. 가맹점 매니저 통계 레이아웃 */
+.statsLayout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.commonCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.combinedStatsCard {
+  flex: 1;
+}
+
+.deliveryPathSection {
+  padding: 24px;
+}
+
+.sectionSubTitle {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-main);
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.rightCardArea {
+  flex: 1;
+}
+
+.fullWidthSection {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .tabContainer {
+    width: 90%;
+  }
+
+  .statsLayout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .combinedStatsCard,
+  .rightCardArea {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .tabContainer {
+    width: 100%;
+    margin: 12px 0 24px;
+  }
+
+  .deliveryPathSection {
+    padding: 18px 14px;
+  }
+}

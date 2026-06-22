@@ -1,0 +1,704 @@
+/* --- 1. 폰트 및 공통 변수 설정 --- */
+.screen-container {
+  font-family: var(--font-body);
+}
+.logo {
+  font-family: var(--font-logo);
+}
+.main-title {
+  font-family: var(--font-title);
+}
+.card-title,
+.find-tab-btn,
+.tab-button {
+  font-family: var(--font-sub);
+}
+input,
+button {
+  font-family: var(--font-body);
+}
+
+/* --- 2. 메인 컨테이너 & 배경 효과 --- */
+.screen-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 110%;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-color: var(--color-brand);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-bg);
+  overflow-x: hidden;
+  overflow-y: auto; /*  모바일 대응: 컨텐츠 길어지면 스크롤 허용 */
+  transition: background-position 0.2s ease-out;
+  z-index: 1;
+  animation: bg-breathe 12s ease-in-out infinite alternate;
+}
+
+.screen-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  animation: mood-shift 30s infinite alternate ease-in-out;
+}
+
+/* --- 3. 헤더 및 로고 --- */
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-bg);
+}
+
+/* --- 4. 메인 레이아웃 (데스크톱 기준) --- */
+.main-content,
+.find-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  padding: 0 50px 50px 50px;
+  z-index: 10;
+}
+
+.info-section {
+  width: 320px;
+  display: flex;
+  height: 350px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.eco-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.main-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 10px 0;
+}
+
+.stats,
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.notice-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* --- 5. 카드 및 유리 효과 --- */
+.login-card,
+.find-card {
+  width: 450px;
+  border-radius: 24px;
+  padding: 40px 45px;
+  color: var(--text-main);
+  z-index: 20;
+}
+
+.premium-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+.card-info {
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+.blooming-text:hover .leaf-point {
+  animation: text-sway 2s ease-in-out infinite;
+  color: var(--color-brand);
+  transition: color 0.3s;
+}
+.leaf-point {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+.leaf-point::before {
+  content: "🌱";
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+}
+
+/* --- 6. 탭 및 입력 폼 --- */
+.premium-tabs {
+  position: relative;
+  display: flex;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 30px;
+  padding: 5px;
+  margin-bottom: 25px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.slide-indicator {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  width: calc(50% - 5px);
+  background: var(--color-brand, #2e7d32);
+  border-radius: 25px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+  z-index: 1;
+}
+.slide-indicator.left {
+  transform: translateX(0);
+}
+.slide-indicator.right {
+  transform: translateX(100%);
+}
+
+.premium-tabs .tab-button {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.4s ease;
+}
+.premium-tabs .tab-button.active {
+  color: #fff;
+}
+
+.login-form,
+.find-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.find-content input {
+  padding: 18px;
+  border-radius: 15px;
+  border: 1px solid var(--color-surface);
+  font-size: 0.95rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.6);
+  transition: border-color 0.3s;
+}
+.find-content input:hover {
+  border-color: var(--text-sub);
+}
+.find-content input:focus {
+  border-color: var(--color-brand);
+}
+
+.full-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-with-btn {
+  display: flex;
+  gap: 10px;
+}
+.flex-input {
+  flex: 1;
+}
+
+/* --- 7. 타이머 및 인증 버튼 (누락 복구) --- */
+.timer-wrapper {
+  position: relative;
+  width: 100%;
+}
+.timer-text {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 8px;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  z-index: 10;
+  border-radius: 8px;
+}
+.timer-text.danger {
+  color: #e53935;
+}
+
+.verify-send-btn {
+  padding: 0 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.verify-send-btn:hover {
+  background-color: var(--color-surface);
+}
+
+/* --- 8. 하단 옵션 및 버튼 --- */
+.caps-warning {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #d32f2f;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding-left: 5px;
+  transition: all 0.3s ease-out;
+}
+.caps-warning.show {
+  max-height: 30px;
+  opacity: 1;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+.remember-me input[type="checkbox"] {
+  accent-color: var(--color-brand);
+}
+
+.login-button,
+.submit-verify-btn {
+  width: 100%;
+  padding: 18px;
+  background-color: var(--color-brand);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.login-button:disabled,
+.submit-verify-btn:disabled,
+.verify-send-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.login-button:disabled::before,
+.submit-verify-btn:disabled::before,
+.verify-send-btn:disabled::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: auth-button-spin 0.7s linear infinite;
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+}
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shimmer-sweep 3s infinite;
+}
+
+.card-footer,
+.find-footer {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
+  font-size: 0.85rem;
+}
+.card-footer a,
+.back-to-login {
+  text-decoration: none;
+  color: var(--text-main);
+  transition: color 0.3s;
+}
+.card-footer a:hover,
+.back-to-login:hover {
+  color: var(--color-brand);
+}
+
+/* --- 9. 캐릭터 및 말풍선 --- */
+.illustration-section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+.speech-bubble {
+  background-color: var(--color-bg);
+  color: var(--text-main);
+  border-radius: 20px;
+  padding: 15px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: right;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--color-bg);
+}
+.character-illustration img {
+  width: 220px;
+}
+
+/* --- 10. MUI 및 Swal 오버라이드 --- */
+.MuiOutlinedInput-root {
+  border-radius: 15px !important;
+  background: rgba(255, 255, 255, 0.6);
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--color-brand) !important;
+}
+.greencarry-swal-popup {
+  border-radius: 20px !important;
+  font-family: "Pretendard", sans-serif;
+}
+.greencarry-swal-title {
+  color: var(--color-brand) !important;
+}
+.greencarry-swal-confirm-button {
+  background-color: var(--color-brand) !important;
+  border-radius: 10px !important;
+}
+
+/* --- 11.모바일 대응 미디어 쿼리 (통합)  --- */
+@media (max-width: 1024px) {
+  .screen-container {
+    /*  1. scroll을 fixed로 변경 (배경은 가만히 있고 내용만 움직이게) */
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+
+    /*  2. 높이 설정 최적화 */
+    height: auto; /* 고정 높이 해제 */
+    min-height: 100vh; /* 최소 화면 높이는 확보 */
+    overflow-y: visible; /* 스크롤은 브라우저 기본 스크롤 사용 */
+    position: relative; /* absolute에서 생기는 높이 꼬임 방지 */
+  }
+
+  .main-content,
+  .find-content {
+    flex-direction: column;
+    gap: 30px;
+    padding: 80px 15px 40px 15px !important; /* 상단 여백 줘서 헤더랑 안 겹치게 */
+    margin-top: 0;
+    width: 100%;
+    min-height: 100vh; /* 컨텐츠 영역도 최소 높이 확보 */
+    box-sizing: border-box !important;
+  }
+  .info-section {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+  }
+  .input-with-btn {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important; /* 줄바꿈 금지 */
+  }
+  .flex-input {
+    flex: 1 !important;
+    min-width: 0 !important; /* 인풋이 공간 없으면 스스로 줄어들게 함 */
+  }
+
+  .verify-send-btn {
+    flex-shrink: 0 !important; /* 버튼이 절대 안 잘리게 고정 */
+    font-size: 0.85rem !important;
+    padding: 0 10px !important;
+  }
+  .main-title {
+    font-size: 2rem;
+  }
+  .login-card,
+  .find-card {
+    width: calc(100% - 30px) !important; /* 화면 양옆 여백 15px씩 확보 */
+    max-width: 420px !important;
+    padding: 30px 15px !important; /* 패딩을 확 줄여서 내부 공간 확보 */
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+  .illustration-section {
+    width: 100%;
+    align-items: center;
+    order: 3;
+  }
+  .speech-bubble {
+    text-align: center;
+  }
+  .speech-bubble::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+  .main-title {
+    font-size: 1.6rem;
+  }
+  .card-title {
+    font-size: 1.3rem;
+  }
+  .login-button {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  /*주석*/
+  .card-footer {
+    gap: 15px;
+    font-size: 0.75rem;
+  }
+  .character-illustration img {
+    width: 160px;
+  }
+}
+
+/* --- 12. 애니메이션 Keyframes (전체 복구) --- */
+@keyframes text-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 200%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+@keyframes auth-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes gentle-chat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+@keyframes bg-breathe {
+  0% {
+    background-size: 120%;
+  }
+  100% {
+    background-size: 125%;
+  }
+}
+@keyframes mood-shift {
+  0% {
+    background-color: rgba(0, 150, 255, 0.3);
+  }
+  33% {
+    background-color: rgba(255, 255, 220, 0.1);
+  }
+  66% {
+    background-color: rgba(255, 140, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(20, 0, 80, 0.4);
+  }
+}
+@keyframes leaf-fade-out {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-20px, 60px) rotate(180deg) scale(0);
+    opacity: 0;
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(0);
+  }
+}
+@keyframes float-around {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes firefly-glow {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8);
+  }
+}
+
+/* --- 13. 입자 효과 및 이스터에그 스타일 --- */
+.particle-leaf {
+  position: fixed;
+  background-color: var(--color-brand);
+  border-radius: 80% 0 80% 0;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 100;
+  animation: leaf-fade-out 1.5s ease-out forwards;
+}
+.eco-bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  filter: blur(2px);
+  z-index: 3;
+  pointer-events: none;
+  animation: float-around 6s infinite ease-in-out;
+}
+.firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #e6ee9c;
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px 2px #cddc39,
+    0 0 20px 5px #8bc34a;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  animation: firefly-glow infinite alternate ease-in-out;
+}
+.easter-egg-leaf {
+  position: fixed;
+  top: -50px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall linear forwards;
+}

@@ -1,0 +1,405 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.formRow {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.label {
+  width: 160px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+  padding-top: 12px;
+}
+
+.inputWrap {
+  flex: 1;
+}
+
+.inputBase,
+.textareaBase {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #eee;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.imageUploadBox > img {
+  width: 100%;
+  height: 100%;
+}
+.forminfo {
+  display: flex;
+  flex-direction: column;
+}
+.inputBase:focus,
+.textareaBase:focus {
+  border-color: #2e8147;
+  outline: none;
+}
+
+.textareaBase {
+  height: 120px;
+  resize: none;
+}
+
+/* 주소 */
+.addressTopRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.addressSearchBtn {
+  width: 100px;
+  background: #2e8147;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* 카테고리 */
+.categoryGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.categoryBtn {
+  padding: 8px 16px;
+  border: 1px solid #eee;
+  background: #f9f9f9;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #666;
+}
+
+.categoryBtnActive {
+  background: #2e8147;
+  color: #fff;
+  border-color: #2e8147;
+}
+
+/* 이미지 업로드 */
+.imageUploadBox {
+  border: 2px dashed #eee;
+  border-radius: 12px;
+  height: 350px; /* 💡 높이를 크게 설정 */
+  background-color: #fafafa;
+  background-size: cover; /* 💡 이미지가 박스를 가득 채움 */
+  padding: 30px;
+  align-items: center;
+  text-align: center;
+  background: #fafafa;
+}
+
+.uploadHint {
+  font-size: 12px;
+  color: #999;
+  margin: 8px 0 15px;
+}
+
+.browseBtn {
+  display: inline-block;
+  padding: 8px;
+  text-align: center;
+  background: #2e8147;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-right: 60px;
+}
+
+/* 영업시간 토글 */
+.sectionDivider {
+  margin: 40px 0 25px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2e8147;
+  border-bottom: 2px solid #2e8147;
+  padding-bottom: 10px;
+}
+
+.hoursToggleGroup {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.hoursToggleBtn {
+  flex: 1;
+  padding: 15px;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  position: relative;
+}
+
+.hoursToggleBtnActive {
+  border-color: #2e8147;
+  color: #2e8147;
+  font-weight: 600;
+}
+
+.checkIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.hoursContentBox {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.timeInputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.timeSelect {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.dayRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* 휴무일 */
+.restDayBox {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.noRestDayMsg {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.restDayItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.restDaySelects {
+  display: flex;
+  gap: 10px;
+}
+
+.inputBaseSelect {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.deleteTextBtn {
+  background: none;
+  border: none;
+  color: #ff4d4f;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.addTextBtn {
+  background: none;
+  border: none;
+  color: #2e8147;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+/* 하단 버튼 */
+.submitWrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 16px;
+  background: #2e8147;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkboxWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.dateFieldWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dateInput {
+  cursor: pointer;
+  padding-right: 44px;
+}
+
+.calendarIcon {
+  position: absolute;
+  right: 14px;
+  color: var(--color-brand);
+  cursor: pointer;
+  font-size: 22px !important;
+}
+
+.calendarPopup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 100;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
+  background-color: #fff;
+  border: 1px solid #e5efe7;
+}
+
+.calendarPopup :global(.react-calendar) {
+  width: min(320px, calc(100vw - 32px));
+  border: none;
+  font-family: var(--font-body);
+  padding: 10px;
+}
+
+.calendarPopup :global(.react-calendar__navigation button) {
+  min-width: 40px;
+  border-radius: 10px;
+}
+
+.calendarPopup :global(.react-calendar__tile) {
+  border-radius: 10px;
+}
+
+.calendarPopup :global(.react-calendar__tile--active) {
+  background: var(--color-brand) !important;
+  color: #fff;
+}
+
+.calendarPopup :global(.react-calendar__tile--now) {
+  background: #eef7f0;
+  color: var(--color-brand);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px auto;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .label {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .addressTopRow,
+  .hoursToggleGroup,
+  .timeInputRow,
+  .restDayItem,
+  .restDaySelects,
+  .dayRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addressSearchBtn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .imageUploadBox {
+    height: 240px;
+    padding: 16px;
+  }
+
+  .browseBtn {
+    margin-right: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hoursContentBox,
+  .restDayBox {
+    padding: 16px;
+  }
+
+  .categoryGroup {
+    gap: 10px;
+  }
+
+  .categoryBtn {
+    flex: 1 1 calc(50% - 10px);
+    text-align: center;
+  }
+
+  .calendarPopup {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px 12px;
+  }
+
+  .imageUploadBox {
+    height: 200px;
+  }
+
+  .categoryBtn {
+    flex-basis: 100%;
+  }
+}
