@@ -1,0 +1,253 @@
+/* 뒷배경 어둡게 처리 */
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 메인 박스 */
+.modal_content {
+  background-color: #ffffff;
+  width: 500px;
+  height: 90vh; /* 화면의 90% 높이 차지 */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 자식 요소가 모달 밖으로 나가는 것 방지 */
+}
+
+/* 헤더 (고정) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: var(--font-sub);
+}
+
+.close_btn {
+  cursor: pointer;
+}
+
+/* 본문 영역 (스크롤 발생) */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.image_placeholder {
+  width: 100%;
+  height: 250px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.menu_info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+}
+.desc {
+  color: var(--text-sub);
+  margin: 0 0 15px 0;
+}
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin: 0;
+}
+
+/* 옵션 섹션 */
+.option_section h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.option_row {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 라디오/체크박스가 선택되었을 때의 스타일 */
+.selected {
+  background-color: var(--color-surface); /* 연한 녹색 */
+  border-color: var(--color-brand); /* 진한 녹색 테두리 */
+}
+
+.option_row input {
+  margin-right: 15px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.price_diff,
+.eco_point {
+  margin-left: auto;
+  color: var(--text-sub);
+}
+.eco_point {
+  color: var(--color-brand);
+  font-weight: bold;
+}
+
+/* 다회용 용기 카드 */
+.reusable_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-brand);
+  padding: 20px;
+  border-radius: 8px;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.reusable_title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.badge {
+  background-color: var(--color-brand);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+.reusable_info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+/* 토글 스위치 UI (CSS만으로 구현) */
+.toggle_switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+.toggle_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--text-main);
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* 하단 푸터 (고정) */
+.footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.summary_con {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.summary_row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary_rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quantity_control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+}
+.q_btn {
+  cursor: pointer;
+  color: var(--text-sub);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 2px;
+}
+.carbon_total {
+  color: var(--color-brand);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.carbon_total_red {
+  color: var(--color-carbon);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.submit_btn {
+  background-color: var(--color-brand);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}

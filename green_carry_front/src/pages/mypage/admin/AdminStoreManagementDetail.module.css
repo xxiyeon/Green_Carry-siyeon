@@ -1,0 +1,250 @@
+.content {
+  flex: 1;
+  background-color: #ffffff;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px !important;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.searchField {
+  width: 360px;
+  background-color: #fff;
+}
+
+.searchField :global(.MuiOutlinedInput-root) {
+  border-radius: 999px;
+}
+
+.headRow {
+  background-color: #fcfcfc;
+}
+
+.headCell {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #374151 !important;
+  border-top: 1px solid #edf0f2 !important;
+  border-bottom: 1px solid #edf0f2 !important;
+}
+
+.checkboxCell {
+  width: 44px;
+  border-top: 1px solid #edf0f2 !important;
+  border-bottom: 1px solid #edf0f2 !important;
+}
+
+.thInner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bodyRow td {
+  border-bottom: 1px solid #edf0f2;
+}
+
+.bodyCell {
+  font-size: 15px !important;
+  color: #1f2937 !important;
+  vertical-align: middle !important;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* 기본 가운데 정렬 */
+  font-family: var(--font-body);
+}
+
+.headRow th,
+.headRow td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.headerCell {
+  display: flex;
+  align-items: center;
+}
+.headRow th {
+  color: var(--text-sub);
+  font-weight: 600;
+  font-size: 14px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 2px solid #f0f0f0;
+  white-space: nowrap;
+}
+.orderId {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.infoBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.productImage {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.mainText {
+  margin: 0 0 3px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.subText {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.paginationWrap {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageMoveBtn {
+  text-transform: none !important;
+  border-radius: 8px !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.pageList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageBtn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.active {
+  border: 1px solid #5a8f63;
+  background-color: #eef8ef;
+  color: #2f6c39;
+  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.page_btn_nav {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page_btn_nav:hover {
+  background-color: #f9f9f9;
+}
+
+.page_numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page_num {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.page_num:hover {
+  background-color: #f9f9f9;
+}
+
+.page_num.active {
+  border: 1px solid var(--color-brand); /* 활성 페이지에 브랜드 컬러 적용 */
+  color: var(--color-brand);
+  background-color: var(--color-surface);
+  font-weight: 600;
+}
+
+.page_dots {
+  color: var(--text-sub);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 20px 16px;
+    border-radius: 16px !important;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .searchField {
+    width: 100%;
+  }
+
+  .table {
+    min-width: 720px;
+  }
+
+  .paginationWrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}

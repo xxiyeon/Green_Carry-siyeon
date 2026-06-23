@@ -1,0 +1,80 @@
+.eco-switch-container {
+  position: fixed;
+  top: 0;
+  right: 20px;
+  z-index: 10005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+
+  touch-action: none;
+}
+
+.eco-string {
+  width: 2px;
+  background-color: #555;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.eco-handle {
+  width: 16px;
+  height: 24px;
+  background: linear-gradient(to bottom, #d4af37, #b8860b);
+  border-radius: 8px;
+  cursor: grab;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-user-drag: none;
+}
+
+.eco-handle:active {
+  cursor: grabbing;
+}
+
+/* 절전 모드 전체 덮어씌우기 */
+.eco-dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 5, 10, 0.95);
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eco-dark-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eco-dark-message {
+  color: #a5d6a7;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 20px #4caf50;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* body에 추가될 글로벌 다크모드 클래스 */
+body.eco-dark-mode {
+  background-color: #000 !important;
+  color: #fff !important;
+}

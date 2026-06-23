@@ -1,0 +1,50 @@
+# --- Build Artifacts ---
+target/
+build/
+out/
+
+# --- IDE Settings ---
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.factorypath
+
+# --- Secrets & Configs ---
+.env
+# 만약 로컬용 설정파일을 따로 쓴다면 제외
+application-local.properties
+application-dev.yml
+
+# --- OS & Logs ---
+.DS_Store
+*.log
+logs/
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production / Build
+/build
+/dist
+/.next/
+/out/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor settings
+.vscode/
+.idea/

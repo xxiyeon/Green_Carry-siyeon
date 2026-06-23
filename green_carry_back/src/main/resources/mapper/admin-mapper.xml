@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.iei.admin.model.dao.AdminDao">
+	<select id="selectMonthlySales" resultType="map">
+		SELECT TO_CHAR(L.reg_date, 'YYYY-MM') AS monthly,
+			SUM(D.price * D.quantity) AS total_sales
+		FROM order_detail D
+		INNER JOIN order_list_map L
+			ON D.order_id = L.order_id
+		WHERE (L.reg_DATE BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -5), 'MM') AND LAST_DAY(SYSDATE))
+			OR (L.reg_DATE BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -17), 'MM') AND LAST_DAY(ADD_MONTHS(SYSDATE, -12)))
+		GROUP BY TO_CHAR(L.reg_DATE, 'YYYY-MM')
+		ORDER BY monthly ASC
+	</select>
+
+	<select id="selectMonthlyPoint" resultType="map">
+		SELECT TO_CHAR(COMPLETE_DATE, 'YYYY-MM') AS monthly,
+			SUM(get_point) AS total_point
+		FROM ORDER_TBL
+		WHERE (COMPLETE_DATE BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -5), 'MM') AND LAST_DAY(SYSDATE))
+			OR (COMPLETE_DATE BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -17), 'MM') AND LAST_DAY(ADD_MONTHS(SYSDATE, -12)))
+		GROUP BY TO_CHAR(COMPLETE_DATE, 'YYYY-MM')
+		ORDER BY monthly ASC
+	</select>
+
+	<resultMap id="orderMap" type="OrderListByStoreId">
+		<id property="orderId" column="order_id" />
+		<result property="memberId" column="member_id" />
+		<result property="memberEmail" column="member_email" />
+		<result property="totalPrice" column="total_price" />
+		<result property="deliveryType" column="delivery_type" />
+		<result property="storeName" column="store_name" />
+		<result property="orderStatus" column="order_status" />
+		<result property="memberThumb" column="member_thumb" />
+	</resultMap>
+
+	<resultMap id="orderDetailMap" type="orderDetail">
+		<result property="menuName" column="menu_name" />
+		<result property="menuImage" column="menu_image" />
+		<result property="quantity" column="quantity" />
+		<result property="price" column="price" />
+		<result property="options" column="options" />
+		<result property="deliveryType" column="delivery_type" />
+	</resultMap>
+
+	<select id="selectOrdersByStoreId" resultMap="orderMap">
+		SELECT o.order_id,
+			o.member_id,
+			m.member_email,
+			(SELECT NVL(SUM(d.price * d.quantity), 0)
+			 FROM order_detail d
+			 WHERE d.order_id = o.order_id) AS total_price,
+			o.delivery_type,
+			s.store_name,
+			o.order_status AS order_status,
+			m.member_thumb
+		FROM order_tbl o
+		JOIN member_tbl m
+			ON o.member_id = m.member_id
+		JOIN store_tbl s
+			ON o.store_id = s.store_id
+		WHERE s.store_id = #{storeId}
+		ORDER BY o.order_id DESC
+	</select>
+
+	<select id="selectOrderDetailByOrderId" resultMap="orderDetailMap">
+		SELECT m.menu_name AS menu_name,
+			m.menu_image AS menu_image,
+			d.quantity,
+			d.price,
+			d.option_string AS options,
+			o.delivery_type
+		FROM order_detail d
+		JOIN order_tbl o
+			ON d.order_id = o.order_id
+		JOIN menu_tbl m
+			ON d.menu_id = m.menu_id
+		WHERE d.order_id = #{orderId}
+	</select>
+
+	<select id="selectMenuListByOrderId" resultType="Menu">
+		SELECT d.menu_id,
+			m.menu_name,
+			m.menu_image,
+			d.option_string,
+			d.quantity
+		FROM order_detail d
+		JOIN menu_tbl m
+			ON d.menu_id = m.menu_id
+		WHERE d.order_id = #{orderId}
+	</select>
+
+	<select id="selectAllReview" resultType="StoreReviewResponse">
+		SELECT r.member_id AS memberId,
+			m.member_thumb AS memberProfile,
+			r.order_id AS orderId,
+			r.review_rating AS reviewRating,
+			TO_CHAR(r.review_date, 'yyyy-mm-dd') AS reviewDate,
+			r.review_content AS reviewContent,
+			r.review_thumb AS reviewThumb,
+			LISTAGG(o.menu_name, ', ') WITHIN GROUP (ORDER BY o.menu_name) AS menuName,
+			rc.review_comment_content AS reviewCommentContent,
+			TO_CHAR(rc.review_comment_date, 'yyyy-mm-dd') AS reviewCommentDate,
+			s.store_name AS storeName
+		FROM review_tbl r
+		JOIN member_tbl m
+			ON r.member_id = m.member_id
+		JOIN order_detail od
+			ON r.order_id = od.order_id
+		JOIN menu_tbl o
+			ON od.menu_id = o.menu_id
+		JOIN order_tbl ot
+			ON r.order_id = ot.order_id
+		JOIN store_tbl s
+			ON ot.store_id = s.store_id
+		LEFT JOIN (
+			SELECT order_id,
+				review_comment_content,
+				review_comment_date
+			FROM (
+				SELECT rc.*,
+					ROW_NUMBER() OVER (
+						PARTITION BY rc.order_id
+						ORDER BY rc.review_comment_date DESC
+					) AS rn
+				FROM review_comment_tbl rc
+			)
+			WHERE rn = 1
+		) rc
+			ON r.order_id = rc.order_id
+		GROUP BY r.member_id,
+			m.member_thumb,
+			r.order_id,
+			r.review_rating,
+			r.review_date,
+			r.review_content,
+			r.review_thumb,
+			rc.review_comment_content,
+			rc.review_comment_date,
+			s.store_name
+		ORDER BY r.order_id DESC
+	</select>
+</mapper>

@@ -1,0 +1,451 @@
+.page {
+  background-color: var(--color-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.topSummary {
+  background: #2f8f46;
+  color: white;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.summaryLabel {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.summaryValue {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.summaryDesc {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.orderListWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderCard {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.orderTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.leftInfo {
+  display: flex;
+  gap: 16px;
+}
+
+.menuThumb {
+  margin-top: 14px;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.storeName {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.menuName {
+  font-size: 15px;
+}
+
+.optionText {
+  font-size: 14px;
+  color: #666;
+}
+
+.orderNo {
+  font-size: 13px;
+  color: #888;
+}
+
+.rightInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.statusBadge {
+  background: #e8f4ea;
+  color: #2f8f46;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reviewBtn {
+  background-color: var(--color-brand); /* 기존 녹색 계열 */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reviewBtnDisabled {
+  background-color: #e0e0e0;
+  color: #999;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: not-allowed;
+  font-weight: bold;
+}
+
+.orderMiddle {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.infoBlock {
+  font-size: 14px;
+}
+
+.infoTitle {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.carbonBox {
+  margin-top: 20px;
+  background: #eef6ef;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carbonLabel {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.carbonDesc {
+  font-size: 13px;
+  color: #666;
+}
+
+.carbonValueWrap {
+  text-align: right;
+}
+
+.carbonValue {
+  display: block;
+  font-size: 28px;
+  color: #12803c;
+  font-weight: 700;
+}
+.filterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dateInputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dateInput {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fcfa 100%);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.dateInput:focus {
+  transform: translateY(-1px);
+}
+
+.dateSeparator {
+  color: #888;
+  font-weight: bold;
+}
+
+.resetBtn {
+  background: #f1f3f1;
+  color: #555;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.resetBtn:hover {
+  background: #e2e6e3;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  opacity: 0.8;
+}
+.cancelBtn {
+  background-color: white;
+  color: #ff4757;
+  border: 1px solid #ff4757;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 8px; /* 뱃지와 간격 벌리기 */
+  transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+  background-color: #fff0f1;
+}
+.canceledCard {
+  opacity: 0.6;
+  background-color: #fdfdfd;
+  position: relative;
+  overflow: hidden; /* 워터마크가 카드 밖으로 나가지 않게 */
+  border: 1px solid #e0e0e0;
+}
+
+/* 2. 음식 사진 흑백 처리 */
+.canceledImg {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+/* 3. 취소선 그어주기 (가격, 탄소 절감량 등) */
+.strikeThrough {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 4. 붉은색 상태 뱃지 (주문취소 전용) */
+.canceledBadge {
+  background-color: #ffeaea;
+  color: #ff4757;
+  border: 1px solid #ff4757;
+}
+
+/* 5. 가운데 크게 찍히는 '취소된 주문' 워터마크 도장 */
+.canceledWatermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 36px;
+  font-weight: 900;
+  color: rgba(255, 71, 87, 0.4); /* 연한 빨간색 */
+  border: 6px solid rgba(255, 71, 87, 0.4);
+  padding: 12px 28px;
+  border-radius: 16px;
+  letter-spacing: 4px;
+  pointer-events: none; /* 클릭을 방해하지 않음 */
+  z-index: 10; /* 글씨 위로 띄움 */
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.page_btn_nav {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page_btn_nav:hover:not(:disabled) {
+  background-color: #f9f9f9;
+}
+
+.page_numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page_num {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.page_num:hover {
+  background-color: #f9f9f9;
+}
+
+.page_num.active {
+  border: 1px solid var(--color-brand);
+  color: var(--color-brand);
+  background-color: var(--color-surface);
+  font-weight: 600;
+}
+
+.page_dots {
+  color: var(--text-sub);
+}
+
+.timerBadge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #fff1f2; /* 연한 분홍/빨강 배경 */
+  color: #ff4757; /* 강조 폰트색 */
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 8px;
+  border: 1px solid #ffccd2;
+}
+
+/* 움직이는 점 효과 (진행중임을 표시) */
+.timerDot {
+  width: 6px;
+  height: 6px;
+  background-color: #ff4757;
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .filterContainer,
+  .orderTop,
+  .leftInfo,
+  .carbonBox {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dateInputs {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dateInput,
+  .resetBtn {
+    width: 100%;
+  }
+
+  .menuThumb {
+    width: 100%;
+    height: 180px;
+    margin-top: 0;
+  }
+
+  .rightInfo {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .orderMiddle {
+    grid-template-columns: 1fr;
+  }
+
+  .carbonValueWrap {
+    text-align: left;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .summaryValue {
+    font-size: 26px;
+  }
+
+  .orderCard {
+    padding: 16px 14px;
+  }
+
+  .canceledWatermark {
+    font-size: 22px;
+    padding: 8px 16px;
+  }
+}

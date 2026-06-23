@@ -1,0 +1,103 @@
+/* 플로팅 바를 화면 하단 중앙에 고정 */
+.cart_container {
+  position: fixed;
+  bottom: 30px; /* 화면 바닥에서 30px 띄움 */
+  left: 50%;
+  transform: translateX(-50%); /* 정확히 가운데 정렬하는 마법의 코드 */
+  width: 90%;
+  max-width: 600px; /* PC 화면에서 너무 길어지지 않게 제한 */
+  z-index: 900; /* 모달(1000)보다는 아래, 본문보다는 위에 배치 */
+
+  /* 부드럽게 나타나는 애니메이션 */
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* 장바구니 버튼 본체 */
+.cart_button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(
+    --color-brand,
+    #2e7d32
+  ); /* 진한 녹색 (변수 없으면 기본값 적용) */
+  color: white;
+  border: none;
+  border-radius: 12px; /* 둥근 사각형 */
+  padding: 16px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.cart_button:hover {
+  background-color: #1b5e20; /* 마우스 올렸을 때 조금 더 진해짐 */
+  transform: translateY(-2px); /* 살짝 위로 떠오르는 효과 */
+}
+
+/* 수량 뱃지 영역 */
+.badge_wrap {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.quantity_badge {
+  background-color: white;
+  color: var(--color-brand, #2e7d32);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+/* 중앙 정보 영역 */
+.info_wrap {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.main_text {
+  font-family: var(--font-sub);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.carbon_text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #c8e6c9; /* 연한 녹색 글씨 */
+}
+
+/* 우측 가격 영역 */
+.price_wrap {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.price_text {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: bold;
+}

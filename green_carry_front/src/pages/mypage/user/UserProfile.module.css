@@ -1,0 +1,471 @@
+/* 상단 메인 대시보드 영역 */
+.right_main {
+  background-color: var(--color-brand);
+  color: var(--color-bg); /* 가독성을 위해 흰색 유지 */
+  padding: 30px 24px;
+  display: flex;
+  flex: 2.5;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 24px; /* Layout과 통일감을 위해 24px로 조정 */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+.user_grade {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: stretch;
+}
+.grade_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.grade_header svg {
+  color: var(--color-point);
+  font-size: 26px;
+  display: block;
+}
+.grade_body p {
+  font-size: 17px;
+  font-weight: bold;
+  color: #666666;
+}
+.grade_title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #666666;
+  margin: 0;
+  line-height: 1;
+  padding-top: 2px;
+}
+.ecoGrade {
+  display: flex;
+  flex: 1;
+  padding: 24px;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 3px solid #2e8147;
+  border-radius: 24px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+.grade_name {
+  font-family: var(--font-title);
+  font-size: 24px;
+  margin: 10px 0 16px 0;
+}
+.grade_subtitle {
+  font-size: 13px;
+  color: #666666;
+  background-color: #f4f6f8;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 브랜드 컬러보다 살짝 밝은 느낌으로 강조 */
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon svg {
+  font-size: 1.8rem;
+  color: var(--color-bg);
+}
+
+.icon_content {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard {
+  text-align: left;
+}
+
+.dashboard_title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.dashboard_value {
+  font-family: var(--font-title); /* Jalnan 적용 */
+  font-size: 22px;
+  margin: 0;
+}
+
+.dashbboard_subtitle {
+  font-size: 11px;
+  margin: 4px 0 0 0;
+  opacity: 0.8;
+}
+
+/* 게이지 바 스타일 */
+.gauge_container {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.gauge_bg {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gauge_fill {
+  height: 100%;
+  background-color: var(--color-point); /* 포인트 컬러(노란색) 적용으로 강조 */
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+.gauge_info {
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: var(--color-bg);
+  font-weight: bolder;
+}
+
+/* 하단 에코 포인트 영역 */
+.right_sub {
+  margin-top: 20px;
+}
+
+.my_point {
+  background-color: var(--color-surface); /* 연한 그린 배경 */
+  color: var(--color-brand); /* 진한 그린 텍스트 */
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 24px;
+}
+
+.my_point > span {
+  font-family: var(--font-sub);
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.my_point > p {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* 콜랩스 메뉴 공통 */
+.collapse_wrapper {
+  background-color: var(--color-bg);
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.collapse_header {
+  padding: 22px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-sub);
+  font-size: 17px;
+  color: var(--text-main);
+}
+
+.history_sub {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--text-sub);
+  margin-left: 10px;
+}
+
+/* 에코 포인트 설명 박스 */
+.eco_content_box {
+  padding: 0 25px 30px 25px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.7;
+  font-weight: bold;
+}
+
+.eco_slogan {
+  font-weight: bold;
+  color: var(--color-brand);
+  margin-top: 20px !important;
+}
+
+/* 적립 내역 리스트 */
+.history_list {
+  padding: 0 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-title);
+  font-weight: 800;
+}
+
+.history_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+  min-height: 65px;
+}
+
+.history_left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+.store_icon {
+  color: var(--color-brand);
+}
+
+.history_date {
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.plus_point,
+.minus_point {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2; /* 줄간격을 타이트하게 고정 */
+}
+
+.my_icon,
+.hs_icon {
+  color: var(--text-sub);
+  display: flex;
+  align-items: center;
+}
+.plus_point {
+  color: #2e7d32; /* 초록색 */
+  font-weight: bold;
+}
+
+.minus_point {
+  color: #d32f2f; /* 빨간색 */
+  font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.page_btn_nav {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.activePage {
+  background-color: #2f8f46; /* 사장님 페이지 테마색 */
+  color: white;
+  border-color: #2f8f46;
+}
+
+.page_btn_nav:hover:not(:disabled) {
+  background-color: #f9f9f9;
+}
+
+.page_numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page_num {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.page_num:hover {
+  background-color: #f9f9f9;
+}
+
+.page_num.active {
+  border: 1px solid var(--color-brand);
+  color: var(--color-brand);
+  background-color: var(--color-surface);
+  font-weight: 600;
+}
+
+.page_dots {
+  color: var(--text-sub);
+}
+
+/*  취소된 아이템 전체 배경 처리 */
+.item_cancelled {
+  background-color: #fcfcfc; /* 아주 연한 회색 배경 */
+}
+
+/*  취소선 및 텍스트 흐리게 */
+.text_cancelled {
+  text-decoration: line-through;
+  color: #999 !important;
+}
+
+.icon_cancelled {
+  color: #ccc !important;
+}
+
+/*  취소 배지 스타일 */
+.cancel_badge {
+  background-color: #ffebee;
+  color: #ef5350;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+/* 취소로 인한 회수 (-) */
+.point_refund_minus {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* 취소로 인한 복구 (+) */
+.point_refund_plus {
+  color: #0288d1; /* 파란색 (복구됨을 강조) */
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.orderIdRow {
+  font-size: 12px;
+  color: var(--text-sub);
+}
+.store_name_row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.point_pending {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .right_main {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .user_grade {
+    flex-direction: column;
+  }
+
+  .icon_content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ecoGrade {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .my_point,
+  .collapse_header,
+  .eco_content_box,
+  .history_list {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .history_item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: auto;
+  }
+
+  .history_left {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .grade_name {
+    font-size: 20px;
+  }
+
+  .history_left {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .store_name_row,
+  .address_tag_row {
+    flex-wrap: wrap;
+  }
+
+  .page_numbers {
+    gap: 4px;
+  }
+}

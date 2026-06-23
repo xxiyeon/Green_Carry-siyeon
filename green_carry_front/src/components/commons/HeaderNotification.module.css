@@ -1,0 +1,115 @@
+.noti_icon_wrap {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; /* 아이콘 크기와 동일하게 */
+  height: 30px; /* 아이콘 크기와 동일하게 */
+  margin-right: 15px; /* 옆 아이콘과의 간격 */
+}
+
+.bell_icon {
+  font-size: 30px !important;
+  color: white !important;
+  display: block;
+}
+
+.noti_badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4757;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  z-index: 10;
+}
+
+.noti_dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 260px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 12px;
+  cursor: default; /* 창 안에서는 화살표 커서 */
+}
+
+.noti_header {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.noti_list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* 알림 아이템 스타일 */
+.noti_item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.noti_item:last-child {
+  border-bottom: none;
+}
+
+.noti_msg {
+  margin: 0;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.noti_time {
+  font-size: 11px;
+  color: #aaa;
+  display: block;
+  margin-top: 4px;
+}
+
+.empty_msg {
+  padding: 30px 0;
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .noti_icon_wrap {
+    position: static;
+    width: auto;
+    min-width: 30px;
+    margin-right: 0;
+    justify-content: flex-start;
+  }
+
+  .noti_dropdown {
+    top: calc(100% + 10px);
+    left: 0;
+    right: auto;
+    width: calc(100% - 20px);
+    min-width: 220px;
+    max-width: min(320px, calc(100vw - 64px));
+    padding: 10px;
+  }
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.iei.store.model.dao.StoreDao">
+    <select id="selectAllStore" >
+        select * from store_tbl
+    </select>
+
+    <select id="findStoreById" parameterType="int" resultType="store">
+        SELECT
+            store_id AS storeId,
+            member_id AS memberId,
+            store_name AS storeName,
+            store_address AS storeAddress,
+            store_phone AS storePhone,
+            store_intro AS storeIntro,
+            store_owner AS storeOwner,
+            store_owner_address AS storeOwnerAddress,
+            store_origin_info AS storeOriginInfo,
+            store_owner_no AS storeOwnerNo,
+            store_category AS storeCategory,
+            store_rating AS storeRating,
+            latitude AS LATITUDE,
+            longitude AS LONGITUDE,
+            store_thumb AS storeThumb
+        FROM STORE_TBL
+        WHERE store_id = #{storeId}
+    </select>
+
+
+    <select id="selectAllMenu" resultType="menu">
+        SELECT
+            menu_id,
+            store_id,
+            menu_name,
+            menu_carbon,
+            menu_price,
+            menu_category,
+            menu_image,
+            menu_info
+        FROM MENU_TBL
+        WHERE store_id = #{storeId}
+          AND menu_status = 1
+        ORDER BY menu_category ASC, menu_id ASC
+    </select>
+
+    <select id="getMenuOptions" parameterType="long" resultType="menuOption">
+        SELECT
+            o.option_no,
+            o.option_type,
+            o.option_name,
+            o.option_price
+        FROM OPTION_TBL o
+                 JOIN MENU_OPTION_MAP mom ON o.option_no = mom.option_no
+        WHERE mom.menu_id = #{menuId}
+        ORDER BY o.option_type ASC, o.option_no ASC
+    </select>
+</mapper>

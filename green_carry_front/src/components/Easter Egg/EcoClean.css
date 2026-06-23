@@ -1,0 +1,55 @@
+/* 게임 전체 투명 레이어 (뒤에 사이트는 그대로 보임) */
+.eco-clean-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* 배경은 클릭 안 되게 (투명) */
+  z-index: 30000;
+  overflow: hidden;
+}
+
+/* 안내 문구 애니메이션 */
+.eco-clean-instruction {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 쓰레기 아이콘 스타일 */
+.eco-trash-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 50px;
+  cursor: grab;
+  pointer-events: auto; /* 얘는 마우스 이벤트를 받아야 함 */
+  user-select: none; /* 드래그 시 텍스트 파란색 반전 방지 */
+  -webkit-user-drag: none; /* 고스트 이미지 방지 */
+  touch-action: none; /* 모바일에서 스크롤 방지 */
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.4));
+  will-change: transform; /* 프레임 드랍 최소화 */
+}
+
+.eco-trash-item:active {
+  cursor: grabbing;
+}

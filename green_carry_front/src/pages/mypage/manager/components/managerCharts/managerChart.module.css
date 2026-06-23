@@ -1,0 +1,231 @@
+/* --- 기존 코드 유지 --- */
+.chartContainer {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.chartCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.viewMoreBtn {
+  border: none;
+  background: none;
+  font-size: 12px;
+  color: var(--color-brand);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.viewMoreBtn:hover {
+  color: #246a3a;
+}
+
+.mainValue {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.changePercent {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #e8f5e9;
+  color: #2e8147;
+  font-weight: normal;
+}
+
+.legendContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  width: calc(50% - 16px);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legendLabel {
+  color: #757575;
+  flex: 1;
+}
+
+.legendValue {
+  font-weight: 600;
+  color: #212121;
+}
+
+.pathWrap {
+  padding: 10px;
+  width: 100%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.percent {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+}
+
+.barBg {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  animation: fillUp 1.2s ease-out forwards;
+  transition: width 0.4s ease-out;
+}
+
+@keyframes fillUp {
+  from {
+    width: 0%;
+  }
+}
+
+.noData {
+  text-align: center;
+  padding: 30px;
+  color: #bbb;
+}
+
+/* ---  툴팁(금액 호버) 기능을 위해 추가된 코드 --- */
+
+.item {
+  position: relative; /* 툴팁 배치의 기준점 */
+}
+
+/* 바와 툴팁을 감싸는 영역 */
+.barContainer {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* 금액 툴팁 스타일 (평소엔 숨김) */
+.amountTooltip {
+  position: absolute;
+  top: -32px; /* 바 위쪽으로 배치 */
+  right: 0; /* 오른쪽에 고정 */
+  background-color: #333;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0; /* 투명도 0 */
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.orderCountTooltip {
+  position: absolute;
+  top: -32px; /* 바 위쪽으로 배치 */
+  right: 0; /* 오른쪽에 고정 */
+  background-color: #333;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0; /* 투명도 0 */
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 말풍선 꼬리표 */
+.amountTooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 12px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+}
+
+/*  마우스 호버 시 툴팁 출력 */
+.barContainer:hover .amountTooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -38px; /* 위로 슥 올라오는 효과 */
+}
+
+/* 호버 시 바 배경색 살짝 강조 */
+.barContainer:hover .barBg {
+  background-color: #e5e5e5;
+}

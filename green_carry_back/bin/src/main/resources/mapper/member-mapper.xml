@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.iei.member.model.dao.MemberDao">
+
+	<select id="loginMember" resultType="member">
+		SELECT *
+		FROM MEMBER_TBL
+		WHERE MEMBER_ID = #{memberId}
+
+		<if test='!memberId.equals("admin1111")'>
+			AND MEMBER_GRADE = #{memberGrade}
+		</if>
+
+
+	</select>
+
+	<select id="findId" resultType="string">
+		SELECT MEMBER_ID
+		FROM MEMBER_TBL
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+
+	<update id="resetPassword">
+		UPDATE MEMBER_TBL
+		SET MEMBER_PW = #{memberPw}
+		WHERE
+		MEMBER_ID = #{memberId}
+	</update>
+
+	<select id="checkMember" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER_TBL
+		WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<select id="selectOneMember" resultType="member">
+	    select * from member_tbl where member_id = #{memberId}
+	</select>
+
+	<insert id="insertUser">
+		INSERT INTO MEMBER_TBL (
+		    MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_THUMB, 
+		    MEMBER_EMAIL, MEMBER_ADDRCODE, MEMBER_ADDR, MEMBER_DETAIL_ADDR, 
+		    MEMBER_GRADE, MEMBER_POINT, ENROLL_DATE, MEMBER_STATUS
+		) VALUES (
+		    #{memberId}, #{memberPw}, #{memberName}, #{memberPhone}, NULL, 
+		    #{memberEmail}, NULL, NULL, NULL, 
+		    1, 0, SYSDATE, 1
+		)
+	</insert>
+	<select id="storeDupCheck" parameterType="_int" resultType="member">
+    	SELECT * FROM MEMBER_TBL WHERE STORE_OWNER_NO = #{storeOwnerNo}
+	</select>
+	<insert id="insertManager" parameterType="member">
+	    INSERT INTO MEMBER_TBL (
+	        MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, 
+	        MEMBER_EMAIL, STORE_OWNER_NO, STORE_NAME, OPENING_DATE, MEMBER_GRADE
+	    ) VALUES (
+	        #{memberId}, #{memberPw}, #{memberName}, #{memberPhone}, 
+	        #{memberEmail}, #{storeOwnerNo}, #{storeName}, #{openingDate}, #{memberGrade}
+    	)
+	</insert>
+	<select id="emailDupCheck" resultType="member">
+		select * from member_tbl where member_email=#{memberEmail}
+	</select>
+
+
+
+
+
+</mapper>
